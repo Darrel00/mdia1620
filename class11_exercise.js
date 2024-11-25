@@ -21,14 +21,15 @@ let settings = {
   addRegistry:true,
   checkRegistry:true,
   banPerson:true,
-  checkBan:true,
+  checkBan:false,
 }
 
 function AddUserToRegistry() {
   //user readline to prompt for the name of the user to be added
   if(settings.addRegistry === true){
     readline.question("What is the name of the user?", _user=>{
-      if(_user = banned){
+  //adding user did not work for me; it should be === instead of = -Daniel
+      if(_user === false){
       console.log("This user is banned")
       StartApp();
     } else {
@@ -56,6 +57,7 @@ function BanUser(){
   readline.question("What is the name of the user you want to ban?", _user=>{
     users.shift(_user);
     banned.push(_user);
+    _user === false;
     StartApp();
   })
 }
@@ -69,6 +71,8 @@ function CheckBanned(){
   StartApp();
 }
 
+// I like how you did this here, instead of toggling you ask for a yes or no input 
+// which totally works as well -Daniel
 function Runsettings(){
   readline.question('Would you like to allow adding? (yes/no)', _mode =>{
     if(_mode === "yes"){
@@ -118,4 +122,9 @@ Plan:
 - Create BanUser function using users.shift(_Username)
 - Create CheckBanned function using for loop: "for(let i=0; i<banned.length; i++)"
 - Create settings function for challenges
-*/
+
+Review by Daniel:
+Overall code is functional, but should use spacing to organize the code.
+Settings function needed to be added with if else statement for challenge 2.
+Checking ban list for adding users doesn't work.
+ */
